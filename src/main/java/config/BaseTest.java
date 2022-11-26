@@ -1,5 +1,7 @@
 package config;
 
+import static org.apache.http.HttpStatus.*;
+
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
