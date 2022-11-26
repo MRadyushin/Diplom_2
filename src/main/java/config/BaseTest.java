@@ -61,7 +61,7 @@ public class BaseTest {
                 .header("Authorization", token)
                 .delete(USER_ENDPOINT)
                 .then()
-                .statusCode(202);
+                .statusCode(SC_ACCEPTED);
     }
 
     @Step("Successfully create a user")
@@ -69,7 +69,7 @@ public class BaseTest {
         Response response = createUser(radyushin);
 
         assertEquals("User should have been created!",
-                200,
+                SC_OK,
                 response.getStatusCode());
         usersToDelete.add(radyushin);
     }
