@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import model.AuthenticationResponse;
 import model.UserRequest;
@@ -14,6 +16,8 @@ import static org.junit.Assert.assertEquals;
 public class CreateOrderTest extends BaseTest {
 
     @Test
+    @DisplayName("Создание заказа с авторизацией и ингридиентами")
+    @Description("Ожидаем создание заказа")
     public void createOrderWithAuthUser() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
@@ -26,6 +30,8 @@ public class CreateOrderTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Создание заказа без авторизации с ингридиентами")
+    @Description("Ожидаем созздание заказа")
     public void createOrderWithUnauthUser() throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
@@ -37,6 +43,8 @@ public class CreateOrderTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Создание заказа без ингридиентов")
+    @Description("Ожидаем ошибку создания")
     public void createOrderWithoutIngredients() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
@@ -49,6 +57,8 @@ public class CreateOrderTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Создание заказа с неверным хешем ингредиентов")
+    @Description("Ожидаем ошибку создания заказа")
     public void createOrderWithWrongIngredients() throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");

@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import model.AuthenticationResponse;
 import model.PatchResponse;
@@ -15,6 +17,8 @@ import static org.junit.Assert.assertTrue;
 public class UpdateUserTest extends BaseTest {
 
     @Test
+    @DisplayName("Изменение данных авторизованного пользователя")
+    @Description("Ожидаем успешное изменение данных пользователя")
     public void updatingUserWithAuth() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
@@ -57,6 +61,8 @@ public class UpdateUserTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Изменение данных не авторизованного пользователя")
+    @Description("Ожидаем ошибку изменение данных пользователя")
     public void updatingUserWithoutAuth() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
