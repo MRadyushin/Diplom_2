@@ -5,6 +5,8 @@ import org.junit.Test;
 import config.BaseTest;
 import config.OrderData;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.apache.http.HttpStatus.*;
 
 import static org.junit.Assert.assertEquals;
@@ -12,7 +14,8 @@ import static org.junit.Assert.assertEquals;
 public class CreateOrderTest extends BaseTest {
 
     @Test
-    public void createOrderWithAuthUser() {
+    public void createOrderWithAuthUser() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);
         AuthenticationResponse authResponse = authorizeUser(radyushin).as(AuthenticationResponse.class);
@@ -23,7 +26,8 @@ public class CreateOrderTest extends BaseTest {
     }
 
     @Test
-    public void createOrderWithUnauthUser() {
+    public void createOrderWithUnauthUser() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);
 
@@ -33,7 +37,8 @@ public class CreateOrderTest extends BaseTest {
     }
 
     @Test
-    public void createOrderWithoutIngredients() {
+    public void createOrderWithoutIngredients() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);
         AuthenticationResponse authResponse = authorizeUser(radyushin).as(AuthenticationResponse.class);
@@ -44,7 +49,8 @@ public class CreateOrderTest extends BaseTest {
     }
 
     @Test
-    public void createOrderWithWrongIngredients() {
+    public void createOrderWithWrongIngredients() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);
         AuthenticationResponse authResponse = authorizeUser(radyushin).as(AuthenticationResponse.class);

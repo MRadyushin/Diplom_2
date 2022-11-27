@@ -5,6 +5,8 @@ import model.UserRequest;
 import org.junit.Test;
 import config.BaseTest;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.apache.http.HttpStatus.*;
 
 import static org.junit.Assert.assertEquals;
@@ -13,7 +15,8 @@ import static org.junit.Assert.assertTrue;
 public class UpdateUserTest extends BaseTest {
 
     @Test
-    public void updatingUserWithAuth() {
+    public void updatingUserWithAuth() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);
         AuthenticationResponse authResponse = authorizeUser(radyushin).as(AuthenticationResponse.class);
@@ -54,7 +57,8 @@ public class UpdateUserTest extends BaseTest {
     }
 
     @Test
-    public void updatingUserWithoutAuth() {
+    public void updatingUserWithoutAuth() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         UserRequest updatedRadyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);

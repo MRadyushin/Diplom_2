@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import config.BaseTest;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.apache.http.HttpStatus.*;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +20,8 @@ public class CreateUserTest extends BaseTest {
     @Test
     @DisplayName("Создание пользователя")
     @Description("Ожидаем успешное создание пользователя")
-    public void creatingUserTest() {
+    public void creatingUserTest() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
 
         postNewUser(radyushin);
@@ -27,7 +30,8 @@ public class CreateUserTest extends BaseTest {
     @Test
     @DisplayName("Создать пользователя, который уже зарегистрирован")
     @Description("Ожидаем ошибку создания пользователя ")
-    public void duplicateCreatingUserTest() {
+    public void duplicateCreatingUserTest() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         String uniqueId = getUniqueId();
         UserRequest radyushin = new UserRequest("m.radyushin" + uniqueId + "@yandex.ru", "PraktikumAPI", "radyushin");
         usersToDelete.add(radyushin);
@@ -48,7 +52,8 @@ public class CreateUserTest extends BaseTest {
     @Test
     @DisplayName("создать пользователя и не заполнить одно из обязательных полей")
     @Description("Ожидаем ошибку создания пользователя ")
-    public void creatingUserWithoutRequiredFieldTest() {
+    public void creatingUserWithoutRequiredFieldTest() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
         UserRequest user1 = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", null);
         UserRequest user2 = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", null, "radyushin");
         UserRequest user3 = new UserRequest(null, "PraktikumAPI", "radyushin");
@@ -57,12 +62,12 @@ public class CreateUserTest extends BaseTest {
         assertEquals("Should have received status code 403 because there are missing required fields!",
                 SC_FORBIDDEN,
                 failedResponse2.getStatusCode());
-
+        TimeUnit.SECONDS.sleep(3);
         Response failedResponse1 = createUser(user2);
         assertEquals("Should have received status code 403 because there are missing required fields!",
                 SC_FORBIDDEN,
                 failedResponse1.getStatusCode());
-
+        TimeUnit.SECONDS.sleep(3);
         Response failedResponse = createUser(user3);
         assertEquals("Should have received status code 403 because there are missing required fields!",
                 SC_FORBIDDEN,

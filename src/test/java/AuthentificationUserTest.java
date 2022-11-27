@@ -1,6 +1,7 @@
 import model.AuthenticationResponse;
 import model.UserRequest;
 
+import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 
 import config.BaseTest;
@@ -20,7 +21,8 @@ public class AuthentificationUserTest extends BaseTest {
     @Test
     @DisplayName("Авторизация пользователя с позитивными данными")
     @Description("Ожидаем авторизацию пользователя \"success\": true, код 200")
-    public void authExistingUserTest() {
+    public void authExistingUserTest() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@yandex.ru", "PraktikumAPI", "radyushin");
         postNewUser(radyushin);
 
@@ -33,8 +35,8 @@ public class AuthentificationUserTest extends BaseTest {
  @Test
  @DisplayName("Авторизация пользователя с неверным логином")
  @Description("Ожидаем ошибку авторизации  \"message\": \"email or password are incorrect")
-public void authExistingUserWrongTest() {
-
+public void authExistingUserWrongTest() throws InterruptedException {
+     TimeUnit.SECONDS.sleep(3);
     UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@mail.ru", "PraktikumAPI", "radyushin");
     postNewUser(radyushin);
 
