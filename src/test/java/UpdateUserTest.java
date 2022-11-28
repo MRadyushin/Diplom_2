@@ -34,7 +34,6 @@ public class UpdateUserTest extends BaseTest {
 
     }
 
-
     @Test
     @DisplayName("Изменение эмейла авторизованного пользователя")
     @Description("Ожидаем успешное изменение данных пользователя")
@@ -110,7 +109,6 @@ public class UpdateUserTest extends BaseTest {
 
         assertEquals("Code should be 401!", SC_UNAUTHORIZED, response2.getStatusCode());
     }
-
 
     @Test
     @DisplayName("Изменение пароля не авторизованного пользователя")
