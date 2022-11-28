@@ -1,18 +1,12 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-
 import io.restassured.response.Response;
-
 import model.UserRequest;
-
 import org.junit.Test;
-
 import config.BaseTest;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.apache.http.HttpStatus.*;
-
 import static org.junit.Assert.assertEquals;
 
 public class CreateUserTest extends BaseTest {

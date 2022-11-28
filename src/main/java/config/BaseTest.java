@@ -20,11 +20,11 @@ public class BaseTest {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/api";
     }
 
-    static final String USER_CREATION_ENDPOINT = "/auth/register";
-    static final String USER_AUTH_ENDPOINT = "/auth/login";
-    static final String USER_LOGOUT_ENDPOINT = "/auth/logout";
-    static final String USER_ENDPOINT = "/auth/user";
-    static final String ORDER_ENDPOINT = "/orders";
+    protected static final String USER_CREATION_ENDPOINT = "/auth/register";
+    protected static final String USER_AUTH_ENDPOINT = "/auth/login";
+    protected static final String USER_LOGOUT_ENDPOINT = "/auth/logout";
+    protected static final String USER_ENDPOINT = "/auth/user";
+    protected static final String ORDER_ENDPOINT = "/orders";
 
     protected List<UserRequest> usersToDelete = new ArrayList<>();
 

@@ -6,11 +6,9 @@ import model.UserRequest;
 import org.junit.Test;
 import config.BaseTest;
 import config.OrderData;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.apache.http.HttpStatus.*;
-
 import static org.junit.Assert.assertEquals;
 
 public class CreateOrderTest extends BaseTest {

@@ -5,11 +5,9 @@ import model.AuthenticationResponse;
 import model.UserRequest;
 import org.junit.Test;
 import config.BaseTest;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.apache.http.HttpStatus.*;
-
 import static org.junit.Assert.assertEquals;
 
 public class GetOrderTest extends BaseTest {

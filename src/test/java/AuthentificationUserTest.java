@@ -1,18 +1,13 @@
 import model.AuthenticationResponse;
 import model.UserRequest;
-
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;
-
 import config.BaseTest;
-
 import io.restassured.response.Response;
-
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 
 import static org.apache.http.HttpStatus.*;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -32,18 +27,18 @@ public class AuthentificationUserTest extends BaseTest {
         assertTrue("User auth should have succeeded!", response.as(AuthenticationResponse.class).isSuccess());
     }
 
- @Test
- @DisplayName("Авторизация пользователя с неверным логином")
- @Description("Ожидаем ошибку авторизации  \"message\": \"email or password are incorrect")
-public void authExistingUserWrongTest() throws InterruptedException {
-     TimeUnit.SECONDS.sleep(3);
-    UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@mail.ru", "PraktikumAPI", "radyushin");
-    postNewUser(radyushin);
+    @Test
+    @DisplayName("Авторизация пользователя с неверным логином")
+    @Description("Ожидаем ошибку авторизации  \"message\": \"email or password are incorrect")
+    public void authExistingUserWrongTest() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        UserRequest radyushin = new UserRequest("m.radyushin" + getUniqueId() + "@mail.ru", "PraktikumAPI", "radyushin");
+        postNewUser(radyushin);
 
-    Response response = authorizeUser(new UserRequest("FailedRadyushin@yandex.ru", "FailedPassword", "radyushin"));
+        Response response = authorizeUser(new UserRequest("FailedRadyushin@yandex.ru", "FailedPassword", "radyushin"));
 
-    assertEquals("User auth should have failed because of wrong credentials!",
-            SC_UNAUTHORIZED,
-            response.getStatusCode());
-}
+        assertEquals("User auth should have failed because of wrong credentials!",
+                SC_UNAUTHORIZED,
+                response.getStatusCode());
+    }
 }
